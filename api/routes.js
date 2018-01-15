@@ -16,5 +16,6 @@ module.exports = (app) => {
   app.get(prefix+'/activities', activityController.collection)
   app.post(prefix+'/activities', activityController.start)
   app.patch(prefix+'/activities/:id/end', activityController.end)
+  app.get(prefix+'/activities/per-date', activityController.day)
 
 }

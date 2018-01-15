@@ -21,4 +21,11 @@ module.exports = {
       .then(data => { res.json(data) })
       .catch(error => { next(error) })
   },
+
+  day(req, res, next) {
+    let activity = new Activity
+    activity.dayActivity(req.query.date, req.query.now)
+      .then(data => { res.json(output.success(data, 'Success', 200)) })
+      .catch(error => { next(error) })
+  },
 }
