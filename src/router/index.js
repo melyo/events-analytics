@@ -5,7 +5,8 @@ import Router from 'vue-router'
 import Full from '@/containers/Full'
 
 // Views
-import Dashboard from '@/views/Dashboard'
+import Events from '@/views/Events'
+import Activities from '@/views/Activities'
 
 Vue.use(Router)
 
@@ -16,16 +17,20 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/events',
       name: 'Home',
       component: Full,
       children: [
         {
-          path: 'dashboard',
-          name: 'Dashboard',
-          component: Dashboard
+          path: 'events',
+          name: 'Events',
+          component: Events
+        },
+        {
+          path: 'activities',
+          name: 'Activities',
+          component: Activities
         }
-
       ]
     }
   ]
