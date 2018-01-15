@@ -25,7 +25,7 @@ module.exports = {
 
   count(req, res, next) {
     let event = new Event
-    event.count()
+    event.count(req.query.name, req.query.startDate, req.query.endDate)
       .then(data => { res.json(output.success(data, 'Success', 200)) })
       .catch(error => { next(error) })
   },

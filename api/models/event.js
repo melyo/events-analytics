@@ -21,7 +21,7 @@ class Event extends Model {
     })
   }
 
-  count() {
+  count(event, startDate, endDate) {
     return new Promise((resolve, reject) => {
       db.execute(`
           SELECT
@@ -30,7 +30,8 @@ class Event extends Model {
           FROM
             ${this.table}
           WHERE
-            created_at between '2018-01-01' AND '2018-01-31'
+            created_at BETWEEN "${startDate}" AND "${endDate}"
+            AND name = "${event}"
           GROUP BY
             date
         `)
