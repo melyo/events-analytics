@@ -16,13 +16,19 @@ var app = express()
 var middlewares = require("./lib/middlewares")
 middlewares(app)
 
-// express routes
+// express api routes
 var routes = require("./api/routes")
 routes(app)
 
-// express exceptions handler
+// express api exceptions handler
 var exceptions = require("./lib/exceptions")
 exceptions(app)
+
+// express serve vue build
+var history = require('connect-history-api-fallback')
+var serveStatic = require('serve-static')
+app.use(history())
+app.use(serveStatic(__dirname + "/dist"))
 
 // get our server running
 var port = process.env.APP_PORT || 3000
