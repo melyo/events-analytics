@@ -1,4 +1,5 @@
 var { Model } = require('../../lib/model')
+var db = require('../../lib/database')
 
 class Event extends Model {
   constructor() {
@@ -10,6 +11,14 @@ class Event extends Model {
     ]
 
     super(table, fillable)
+  }
+
+  list() {
+    return new Promise((resolve, reject) => {
+      db.execute(`SELECT DISTINCT name FROM ${this.table}`)
+        .then((data) => { resolve(data) })
+        .catch((error) => { reject(error) })
+    })
   }
 }
 

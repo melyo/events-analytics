@@ -15,4 +15,11 @@ module.exports = {
       .then(data => { res.json(data) })
       .catch(error => { next(error) })
   },
+
+  list(req, res, next) {
+    let event = new Event
+    event.list()
+      .then(data => { res.json(output.success(data, 'Success', 200)) })
+      .catch(error => { next(error) })
+  },
 }
