@@ -37,7 +37,7 @@ class Activity extends Model {
               ),
               IF(
                 ended_at IS NULL,
-                IF("${date} 00:00:00" > "${now}", "${now}", "${date} 23:59:59"),
+                IF("${date} 00:00:00" < "${now}", "${now}", "${date} 23:59:59"),
                 IF(ended_at > "${date} 23:59:59", "${date} 23:59:59", ended_at)
               )
             )
