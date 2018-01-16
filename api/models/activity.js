@@ -23,7 +23,7 @@ class Activity extends Model {
     })
   }
 
-  dayActivity(date, now) {
+  dayActivity(activity, date, now) {
     return new Promise((resolve, reject) => {
       db.execute(`
           SELECT
@@ -46,6 +46,7 @@ class Activity extends Model {
             ${this.table}
           WHERE
             started_at <= "${date} 23:59:59" AND (ended_at >= "${date} 00:00:00" OR ended_at IS NULL)
+            AND name = "${activity}"
         `)
         .then((data) => { resolve(data) })
         .catch((error) => { reject(error) })

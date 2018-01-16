@@ -31,7 +31,7 @@ module.exports = {
 
   day(req, res, next) {
     let activity = new Activity
-    activity.dayActivity(req.query.date, req.query.now)
+    activity.dayActivity(req.query.name, req.query.date, req.query.now)
       .then(data => { res.json(output.success(data, 'Success', 200)) })
       .catch(error => { next(error) })
   },
