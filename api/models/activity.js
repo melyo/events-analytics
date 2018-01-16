@@ -27,18 +27,19 @@ class Activity extends Model {
     return new Promise((resolve, reject) => {
       db.execute(`
           SELECT
-            *,
-            TIMESTAMPDIFF(
-              MINUTE,
-              IF(
-                started_at < "${date} 00:00:00",
-                "${date} 00:00:00",
-                started_at
-              ),
-              IF(
-                ended_at IS NULL,
-                IF("${date} 00:00:00" < "${now}", "${now}", "${date} 23:59:59"),
-                IF(ended_at > "${date} 23:59:59", "${date} 23:59:59", ended_at)
+            SUM(
+              TIMESTAMPDIFF(
+                MINUTE,
+                IF(
+                  started_at < "${date} 00:00:00",
+                  "${date} 00:00:00",
+                  started_at
+                ),
+                IF(
+                  ended_at IS NULL,
+                  IF("${date} 00:00:00" < "${now}", "${now}", "${date} 23:59:59"),
+                  IF(ended_at > "${date} 23:59:59", "${date} 23:59:59", ended_at)
+                )
               )
             )
             AS "minutes"
