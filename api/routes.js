@@ -10,7 +10,7 @@ module.exports = (app) => {
   app.get(prefix+'/events', eventController.collection)
   app.post(prefix+'/events', eventController.store)
   app.get(prefix+'/events/list', eventController.list)
-  // app.get(prefix+'/events/count', eventController.count)
+  app.get(prefix+'/events/count', eventController.count)
 
   // activities
   app.get(prefix+'/activities', activityController.collection)
