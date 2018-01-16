@@ -58,7 +58,6 @@ export default {
   mounted () {
     this.prevDays()
     this.eventsList()
-    
   },
   methods: {
     prevDays () {

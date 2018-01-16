@@ -16,14 +16,16 @@ function convertHex (hex, opacity) {
 export default {
   name: 'activities-chart',
   extends: Line,
-  data () {
-    return {
-      labels: ['label1', 'label2', 'label3', 'label4', 'label5'],
-      counts: [1, 2, 3, 4, 5]
-    }
-  },
+  props: ['loading', 'labels', 'hours'],
   mounted () {
     this.reRenderChart()
+  },
+  watch: {
+    loading (newVal) {
+      if (!newVal) {
+        this.reRenderChart()
+      }
+    }
   },
   methods: {
     reRenderChart () {
@@ -41,7 +43,7 @@ export default {
             pointBackgroundColor: '#f89d1d',
             pointHoverBackgroundColor: '#fff',
             borderWidth: 2,
-            data: this.counts,
+            data: this.hours,
             lineTension: 0
           }
         ]
