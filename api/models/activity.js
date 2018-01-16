@@ -15,6 +15,14 @@ class Activity extends Model {
     super(table, fillable)
   }
 
+  list() {
+    return new Promise((resolve, reject) => {
+      db.execute(`SELECT DISTINCT name FROM ${this.table}`)
+        .then((data) => { resolve(data) })
+        .catch((error) => { reject(error) })
+    })
+  }
+
   dayActivity(date, now) {
     return new Promise((resolve, reject) => {
       db.execute(`
