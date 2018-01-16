@@ -16,17 +16,19 @@ function convertHex (hex, opacity) {
 export default {
   name: 'events-chart',
   extends: Line,
-  data () {
-    return {
-      labels: ['label1', 'label2', 'label3', 'label4', 'label5'],
-      counts: [1, 2, 3, 4, 5]
-    }
-  },
+  props: ['loading', 'labels', 'counts'],
   mounted () {
     this.reRenderChart()
   },
+  watch: {
+    loading (newVal) {
+      if (!newVal) {
+        this.reRenderChart()
+      }
+    }
+  },
   methods: {
-    reRenderChart () {
+    reRenderChart (init) {
       if (this.$data._chart) {
           this.$data._chart.destroy()
       }
