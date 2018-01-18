@@ -5,11 +5,7 @@
         <h4 class="card-title mb-0">Events Report</h4>
       </b-col>
       <b-col sm="3" class="d-none d-md-block">
-          <b-form-select
-            v-model="selected"
-            :plain="true"
-            :options="events">
-          </b-form-select>
+        <b-form-select v-model="selected" :plain="true" :options="events"></b-form-select>
       </b-col>
     </b-row>
     <events-chart

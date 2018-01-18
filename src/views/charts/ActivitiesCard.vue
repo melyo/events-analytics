@@ -2,14 +2,10 @@
   <b-card>
     <b-row>
       <b-col sm="9">
-        <h4 class="card-title mb-0">Activities</h4>
+        <h4 class="card-title mb-0">Activity Report</h4>
       </b-col>
       <b-col sm="3" class="d-none d-md-block">
-          <b-form-select
-            v-model="selected"
-            :plain="true"
-            :options="activities">
-          </b-form-select>
+        <b-form-select v-model="selected" :plain="true" :options="activities"></b-form-select>
       </b-col>
     </b-row>
     <activities-chart

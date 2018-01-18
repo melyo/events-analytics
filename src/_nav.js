@@ -3,7 +3,7 @@ export default {
     {
       name: 'Events',
       url: '/events',
-      icon: 'icon-speedometer'
+      icon: 'icon-graph'
     },
     {
       name: 'Activities',
