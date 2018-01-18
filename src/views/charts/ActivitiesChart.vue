@@ -1,7 +1,7 @@
 <script>
 import { Line } from 'vue-chartjs'
 
-const chartColor = '#f89d1d'
+const chartColor = '#4dbd74'
 
 function convertHex (hex, opacity) {
   hex = hex.replace('#', '')
@@ -37,7 +37,7 @@ export default {
         labels: this.labels,
         datasets: [
           {
-            label: 'Total Calls',
+            label: 'Total Hours',
             backgroundColor: convertHex(chartColor, 10),
             borderColor: chartColor,
             pointBackgroundColor: '#f89d1d',

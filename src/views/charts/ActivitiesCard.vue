@@ -10,7 +10,7 @@
     </b-row>
     <activities-chart
       v-bind:loading="loading"
-      v-bind:labels="labels"
+      v-bind:labels="newLabels"
       v-bind:hours="hours"
       class="chart-wrapper"
       style="height:300px;margin-top:40px;"
@@ -60,6 +60,13 @@ export default {
       return this.sortedActivities.map((item, index) => {
         return item.hours
       })
+    },
+    newLabels () {
+      return this.labels.map((item, index) => {
+        let date = item.split('-')
+        let lookUp = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+        return lookUp[parseInt(date[1])-1]+' '+parseInt(date[2])
+      })
     }
   },
   methods: {
@@ -103,7 +110,8 @@ export default {
         .then(response => {
           this.activityData.forEach(actvity => {
             if (actvity.date === date) {
-              actvity.hours = response.data.data[0].minutes || 0
+              let result = response.data.data[0].minutes/60 || 0
+              actvity.hours = result.toFixed(2)
             }
           });
           this.loading--

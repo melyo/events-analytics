@@ -10,7 +10,7 @@
     </b-row>
     <events-chart
       v-bind:loading="loading"
-      v-bind:labels="labels"
+      v-bind:labels="newLabels"
       v-bind:counts="counts"
       class="chart-wrapper"
       style="height:300px;margin-top:40px;"
@@ -44,6 +44,13 @@ export default {
         counts.push(this.getCount(label))
       })
       return counts
+    },
+    newLabels () {
+      return this.labels.map((item, index) => {
+        let date = item.split('-')
+        let lookUp = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+        return lookUp[parseInt(date[1])-1]+' '+parseInt(date[2])
+      })
     }
   },
   watch: {
