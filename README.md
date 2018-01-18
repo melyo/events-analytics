@@ -35,11 +35,11 @@ npm start
 
 ### Required API Routes
 
-| Method    | URI                           | Request Body              |
-| ---       | ---                           | ---                       |
-| POST      | /api/v1/events                | `{ "name": "purchase 1" }`|
-| POST      | /api/v1/activities            | `{ "name": "level 1" }`   |
-| PATCH     | /api/v1/activities/{id}/end   |                           |
+| Method    | URI                           | Description               | Request Body              |
+| ---       | ---                           | ---                       | ---                       |
+| POST      | /api/v1/events                | track events              | `{ "name": "purchase 1" }`|
+| POST      | /api/v1/activities            | track started activity    | `{ "name": "level 1" }`   |
+| PATCH     | /api/v1/activities/{id}/end   | track ended activity      |                           |
 
 ### Miscellaneous REST API Routes for Frontend
 
