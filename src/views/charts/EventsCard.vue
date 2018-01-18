@@ -2,7 +2,7 @@
   <b-card>
     <b-row>
       <b-col sm="9">
-        <h4 class="card-title mb-0">Events</h4>
+        <h4 class="card-title mb-0">Events Report</h4>
       </b-col>
       <b-col sm="3" class="d-none d-md-block">
           <b-form-select
