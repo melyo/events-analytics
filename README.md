@@ -1,30 +1,53 @@
-# core-ui
+# Events Analytics
 
-> Open Source Admin Template
+### Dependencies
 
-## Build Setup
+- Node.js
+- Express.js
+- MySQL
+- Vue.js
+- Scss
+
+### Set up
 
 ``` bash
+# clone this repository
+git clone https://github.com/melyo/events-analytics.git
+
+# go to project root folder / directory
+cd events-analytics
+
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# set up MySQL as database then create and configure .env file
+cp .env.sample .env
 
-# build for production with minification
+# import data dump from migration/events_analytics_dump.sql
+mysql -u root -p database < migration/events_analytics_dump.sql
+
+# build frontend for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# run Express.js
+npm start
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### Required API Routes
+
+| Method    | URI                           | Request Body              |
+| ---       | ---                           | ---                       |
+| POST      | /api/v1/events                | `{ "name": "purchase 1" }`|
+| POST      | /api/v1/activities            | `{ "name": "level 1" }`   |
+| PATCH     | /api/v1/activities/{id}/end   |                           |
+
+### Miscellaneous REST API Routes for Frontend
+
+| Method    | URI               |
+| ---       | ---               |
+| GET       | /events           |
+| GET       | /events/list      |
+| GET       | /events/count     |
+| GET       | /activities       |
+| GET       | /activities/list  |
+| GET       | /activities/hours |
